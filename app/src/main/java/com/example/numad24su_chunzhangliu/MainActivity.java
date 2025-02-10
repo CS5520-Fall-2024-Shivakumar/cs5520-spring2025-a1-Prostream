@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,16 @@ public class MainActivity extends AppCompatActivity {
                 //name + email
                 Toast.makeText(MainActivity.this, "Chunzhang Liu - liu.chunz@northeastern.edu",
                         Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button btnQuicCalc = findViewById(R.id.btnQuicCalc);
+        btnQuicCalc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新建的计算器 Activity
+                Intent intent = new Intent(MainActivity.this, QuicCalcActivity.class);
+                startActivity(intent);
             }
         });
     }

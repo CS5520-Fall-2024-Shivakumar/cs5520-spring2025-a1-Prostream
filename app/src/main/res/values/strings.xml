@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NUMAD24Su_ChunzhangLiu</string>
+    <string name="title_activity_quic_calc">QuicCalcActivity</string>
 </resources>
