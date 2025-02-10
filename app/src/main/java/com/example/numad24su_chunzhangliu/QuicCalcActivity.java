@@ -4,20 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class QuicCalcActivity extends AppCompatActivity {
 
     private TextView tvCalcDisplay;
-    private String expression = ""; // 用于保存当前输入的表达式
+    private String expression = ""; // now expression
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +18,9 @@ public class QuicCalcActivity extends AppCompatActivity {
 
         tvCalcDisplay = findViewById(R.id.tvCalcDisplay);
 
-        // 示例：为按钮 7 设置点击事件
+        // bind event to button
+
+        // button 7
         Button btn7 = findViewById(R.id.btn7);
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,25 +29,97 @@ public class QuicCalcActivity extends AppCompatActivity {
             }
         });
 
-        // 同理，为其他数字和运算符按钮设置监听
+        // button 8
         Button btn8 = findViewById(R.id.btn8);
-        btn8.setOnClickListener(v -> appendToExpression("8"));
-
-        // … 为 btn9, btnPlus, btn4, btn5, ... 等添加监听
-
-        // “x” 按钮作为删除键
-        Button btnX = findViewById(R.id.btnX);
-        btnX.setOnClickListener(new View.OnClickListener() {
+        btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() > 0) {
-                    expression = expression.substring(0, expression.length() - 1);
-                    tvCalcDisplay.setText(expression.isEmpty() ? "CALC" : expression);
-                }
+                appendToExpression("8");
             }
         });
 
-        // “=” 按钮计算表达式
+        // button 9
+        Button btn9 = findViewById(R.id.btn9);
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("9");
+            }
+        });
+
+        // button +
+        Button btnPlus = findViewById(R.id.btnPlus);
+        btnPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("+");
+            }
+        });
+
+        // button 4
+        Button btn4 = findViewById(R.id.btn4);
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("4");
+            }
+        });
+
+        // button 5
+        Button btn5 = findViewById(R.id.btn5);
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("5");
+            }
+        });
+
+        // button 6
+        Button btn6 = findViewById(R.id.btn6);
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("6");
+            }
+        });
+
+        // button -
+        Button btnMinus = findViewById(R.id.btnMinus);
+        btnMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("-");
+            }
+        });
+
+        // button 1
+        Button btn1 = findViewById(R.id.btn1);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("1");
+            }
+        });
+
+        // button 2
+        Button btn2 = findViewById(R.id.btn2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("2");
+            }
+        });
+
+        // button 3
+        Button btn3 = findViewById(R.id.btn3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("3");
+            }
+        });
+
+        // button =
         Button btnEqual = findViewById(R.id.btnEqual);
         btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,36 +134,66 @@ public class QuicCalcActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // button 0
+        Button btn0 = findViewById(R.id.btn0);
+        btn0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appendToExpression("0");
+            }
+        });
+
+        // button x
+        Button btnX = findViewById(R.id.btnX);
+        btnX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (expression.length() > 0) {
+                    expression = expression.substring(0, expression.length() - 1);
+                    if (expression.isEmpty()) {
+                        tvCalcDisplay.setText("CALC");
+                    } else {
+                        tvCalcDisplay.setText(expression);
+                    }
+                }
+            }
+        });
     }
 
-    // 辅助方法：追加字符并更新显示
+    /**
+     * update textview
+     */
     private void appendToExpression(String str) {
         expression += str;
         tvCalcDisplay.setText(expression);
     }
 
-    // 简单的表达式求值方法：仅支持正整数的加减运算
-    private int evaluateExpression(String expr) {
-        // 这里的实现仅作为示例，不处理运算优先级和错误情况
-        int result = 0;
-        // 用正则表达式分割数字（注意：如果表达式以负号开头可能需要特殊处理）
-        String[] numbers = expr.split("[+-]");
-        // 获取运算符
-        List<Character> operators = new ArrayList<>();
-        for (int i = 0; i < expr.length(); i++) {
-            char c = expr.charAt(i);
-            if (c == '+' || c == '-') {
-                operators.add(c);
-            }
+    /**
+     * calc expression（example "1+2-3"）
+     *
+     */
+    private int evaluateExpression(String expr) throws Exception {
+        if (expr == null || expr.isEmpty()) {
+            throw new Exception("Empty Expression");
         }
-        result = Integer.parseInt(numbers[0]);
-        for (int i = 1; i < numbers.length; i++) {
-            int num = Integer.parseInt(numbers[i]);
-            char op = operators.get(i - 1);
-            if (op == '+') {
-                result += num;
-            } else if (op == '-') {
-                result -= num;
+        int result = 0;
+        int currentNumber = 0;
+        char operator = '+'; // default '+'
+        for (int i = 0; i < expr.length(); i++) {
+            char ch = expr.charAt(i);
+            if (Character.isDigit(ch)) {
+                currentNumber = currentNumber * 10 + (ch - '0');
+            }
+            //
+            if (!Character.isDigit(ch) || i == expr.length() - 1) {
+                if (operator == '+') {
+                    result += currentNumber;
+                } else if (operator == '-') {
+                    result -= currentNumber;
+                }
+                operator = ch;  //
+                currentNumber = 0;
             }
         }
         return result;
