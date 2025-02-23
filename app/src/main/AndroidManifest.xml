@@ -13,6 +13,11 @@
         android:theme="@style/Theme.NUMAD24Su_ChunzhangLiu"
         tools:targetApi="31" >
         <activity
+            android:name=".AboutMeActivity"
+            android:exported="true"
+            android:label="AboutMeActivity"
+            android:theme="@style/Theme.NUMAD24Su_ChunzhangLiu" />
+        <activity
             android:name=".AddOrEditContactActivity"
             android:exported="true"
             android:label="AddOrEditContactActivity"

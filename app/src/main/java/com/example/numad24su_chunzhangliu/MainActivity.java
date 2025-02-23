@@ -16,13 +16,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // About Me  AboutMeActivity
         Button aboutMeButton = findViewById(R.id.aboutMeButton);
         aboutMeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //name + email
-                Toast.makeText(MainActivity.this, "Chunzhang Liu - liu.chunz@northeastern.edu",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AboutMeActivity.class);
+                startActivity(intent);
             }
         });
 
