@@ -35,5 +35,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // 新增 Contacts Collector 按钮：启动 ContactsActivity 显示联系人列表
+        Button contactsCollectorButton = findViewById(R.id.contactsCollectorButton);
+        contactsCollectorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ContactsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
