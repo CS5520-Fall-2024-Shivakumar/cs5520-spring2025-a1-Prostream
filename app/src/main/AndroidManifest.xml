@@ -13,6 +13,11 @@
         android:theme="@style/Theme.NUMAD24Su_ChunzhangLiu"
         tools:targetApi="31" >
         <activity
+            android:name=".ContactsActivity"
+            android:exported="true"
+            android:label="ContactsActivity"
+            android:theme="@style/Theme.NUMAD24Su_ChunzhangLiu" />
+        <activity
             android:name=".QuicCalcActivity"
             android:exported="false"
             android:label="@string/title_activity_quic_calc"
@@ -22,7 +27,6 @@
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
