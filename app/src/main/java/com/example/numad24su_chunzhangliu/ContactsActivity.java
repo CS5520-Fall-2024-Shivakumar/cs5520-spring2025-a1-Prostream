@@ -1,6 +1,7 @@
 
 package com.example.numad24su_chunzhangliu;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +29,23 @@ public class ContactsActivity extends AppCompatActivity {
     private List<Contact> contactList;
 
     @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("contacts", (Serializable) contactList);
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
-        // 初始化数据源
-        contactList = new ArrayList<>();
+        // make show information exists after rotate
+        if (savedInstanceState != null) {
+            contactList = (List<Contact>) savedInstanceState.getSerializable("contacts");
+        } else {
+            contactList = new ArrayList<>();
+        }
 
         // 初始化 RecyclerView 并设置布局管理器和适配器
         recyclerView = findViewById(R.id.recyclerViewContacts);
