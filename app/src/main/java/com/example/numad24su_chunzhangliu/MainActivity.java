@@ -45,5 +45,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // new button to PrimeActivity
+        Button primeActivityButton = findViewById(R.id.btnOpenPrimeActivity);
+        primeActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PrimeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
