@@ -40,6 +40,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PrimeActivity"
+            android:exported="true"
+            android:label="PrimeActivity"
+            android:theme="@style/Theme.NUMAD24Su_ChunzhangLiu" />
+
     </application>
 
 </manifest>
