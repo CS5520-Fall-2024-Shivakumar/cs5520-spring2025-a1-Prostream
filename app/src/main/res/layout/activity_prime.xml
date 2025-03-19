@@ -2,60 +2,69 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Find Primes 按钮，置于顶部，居中显示 -->
     <Button
         android:id="@+id/btn_find_primes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find Primes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        />
+
+    <!-- Terminate Search 按钮，位于 Find Primes 下方，居中显示 -->
+
+    <!-- Pacifier Switch，位于 Terminate Search 下方，居中显示 -->
 
     <Button
         android:id="@+id/btn_terminate_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Terminate Search"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_find_primes" />
 
     <Switch
         android:id="@+id/switch_pacifier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="212dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
         android:text="Pacifier Switch"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_terminate_search" />
 
+    <!-- 显示当前数字的 TextView，位于 Switch 下方，居中显示 -->
     <TextView
         android:id="@+id/tv_current_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="196dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
         android:text="Current Number: "
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/switch_pacifier" />
 
+    <!-- 显示最新质数的 TextView，位于 tv_current_number 下方，居中显示 -->
     <TextView
         android:id="@+id/tv_latest_prime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="196dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
         android:text="Latest Prime: "
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tv_current_number" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
